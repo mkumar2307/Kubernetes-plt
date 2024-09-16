@@ -28,7 +28,22 @@ spec:
         # Mount /tmp as writable
         - name: tmpfs
           mountPath: /tmp
+
+        livenessProbe:
+            exec:
+              command:
+              - true
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      
+        readinessProbe:
+            tcpSocket:
+              host: db1-service
+              port: 6379
+            initialDelaySeconds: 5
+            periodSeconds: 10
       restartPolicy: Always
+
       volumes:
       - name: rootfs
         emptyDir: {}
