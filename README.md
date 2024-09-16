@@ -66,3 +66,14 @@ telnet db1-service 6379
 telnet db2-service 5432
 ```
 If we try to telnet any other services or ports it will fail as we have limited the communication with Network policy.
+
+#### Create a secret for db2       
+`kubectl apply -f db2-secret.yaml`
+
+Update deployment db2 with secrets and redeploy.     
+
+#### check the environment variables inside the db2 conatiner for verification     
+```
+kubectl exec -it <pod-name(db2)> -n project-plato -- /bin/bash
+env | grep DB_
+```
