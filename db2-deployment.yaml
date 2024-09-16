@@ -21,4 +21,15 @@ spec:
         ports:
         - containerPort: 80
         imagePullPolicy: IfNotPresent
+        env:
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: db2-secret
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db2-secret
+              key: password
       restartPolicy: Always
