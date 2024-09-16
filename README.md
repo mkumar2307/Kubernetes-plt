@@ -11,7 +11,7 @@ kubectl get pods -n project-plato
 ```
 
 #### check the /tmp file is writable and remaining filesystem are read-only        
-`kubectl exec -it <pod-name> -n project-plato -- sh`
+`kubectl exec -it <pod-name(backend)> -n project-plato -- /bin/bash`
 
 #### After exec try to write in /tmp      
 
@@ -52,3 +52,17 @@ kubectl apply -f db2-service.yaml
 
 #### Scale back deployment db1 to 1 and verify the status       
 `kubectl scale deployment db1 --replicas=1 -n project-plato`
+
+#### Apply the network policy       
+`kubectl apply -f np-backend.yaml`
+
+#### check the network policy running or not        
+`kubectl get networkpolicy -n project-plato`
+
+#### Testing Network policy functionality      
+```
+kubectl exec -it <pod-name(backend)> -n project-plato -- /bin/bash
+telnet db1-service 6379
+telnet db2-service 5432
+```
+If we try to telnet any other services or ports it will fail as we have limited the communication with Network policy.
