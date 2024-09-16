@@ -23,3 +23,20 @@ cat /tmp/test-file
 
 #### check other filesystems for read-only        
 `touch /root/test-file`
+
+#### Create db1 and db2 deployments        
+
+```
+kubectl apply -f db1-deployment.yaml
+kubectl apply -f db2-deployment.yaml
+```
+
+#### create services for db1 and db2 to expose requested ports        
+
+```
+kubectl apply -f db1-service.yaml
+kubectl apply -f db2-service.yaml
+```
+#### verify created services      
+
+`kubectl get svc -n project-plato`
