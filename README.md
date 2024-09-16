@@ -40,3 +40,15 @@ kubectl apply -f db2-service.yaml
 #### verify created services      
 
 `kubectl get svc -n project-plato`
+
+#### Redeploy the updated backend deployment file      
+`kubectl apply -f backend-deployment.yaml`
+
+#### Check pod readiness status        
+`kubectl get pods -n project-plato`
+
+#### Scale deployment db1 to 0 replicas to check readiness failure and check readiness status again      
+`kubectl scale deployment db1 --replicas=0 -n project-plato`
+
+#### Scale back deployment db1 to 1 and verify the status       
+`kubectl scale deployment db1 --replicas=1 -n project-plato`
