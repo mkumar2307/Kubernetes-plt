@@ -80,6 +80,6 @@ Update deployment db2 with secrets and redeploy.
 
 #### check the environment variables inside the db2 conatiner for verification     
 ```
-kubectl exec -it <pod-name(db2)> -n project-plato -- /bin/bash
+kubectl exec -it <pod-name(db2)> -n project-plato -- sh
 env | grep DB_
 ```
