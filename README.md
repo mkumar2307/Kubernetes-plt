@@ -83,7 +83,7 @@ Update deployment db2 with secrets and redeploy.
 kubectl exec -it <pod-name(db2)> -n project-plato -- sh
 env | grep DB_
 ```
-#### Adding required repo to deploy ‘Postgres’ and 'kube-prometheus-stack' using its respective helm chart
+#### Adding required repo and deploy ‘Postgres’ and 'kube-prometheus-stack' using its respective helm chart
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
