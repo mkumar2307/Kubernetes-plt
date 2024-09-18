@@ -45,9 +45,3 @@ spec:
             initialDelaySeconds: 5
             periodSeconds: 10
       restartPolicy: Always
-
-      volumes:
-      - name: rootfs
-        emptyDir: {}
-      - name: tmpfs
-        emptyDir: {}
