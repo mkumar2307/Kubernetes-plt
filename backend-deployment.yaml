@@ -20,14 +20,16 @@ spec:
         image: busybox:1.32.0
         imagePullPolicy: IfNotPresent
         command: ['sh', '-c', 'tail -f /dev/null']
+        securityContext:
+          readOnlyRootFilesystem: true
         volumeMounts:
-        # Mount the root filesystem as read-only
-        - name: rootfs
-          mountPath: /
-          readOnly: true
-        # Mount /tmp as writable
+        # Mount /tmp as writable (if needed)
         - name: tmpfs
           mountPath: /tmp
+      volumes:
+      # Define tmpfs volume
+      - name: tmpfs
+        emptyDir: {}
 
         livenessProbe:
             exec:
