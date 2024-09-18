@@ -23,13 +23,8 @@ spec:
         securityContext:
           readOnlyRootFilesystem: true
         volumeMounts:
-        # Mount /tmp as writable (if needed)
         - name: tmpfs
           mountPath: /tmp
-      volumes:
-      # Define tmpfs volume
-      - name: tmpfs
-        emptyDir: {}
 
         livenessProbe:
             exec:
@@ -44,4 +39,8 @@ spec:
               port: 6379
             initialDelaySeconds: 5
             periodSeconds: 10
+
+      volumes:
+      - name: tmpfs
+        emptyDir: {}
       restartPolicy: Always
