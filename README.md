@@ -1,5 +1,9 @@
 # Part 1 - Kubernetes workloads Challenge
 
+#### create name space for project and verify       
+`kubectl create namespace project-plato`
+`kubectl get namespaces`
+
 #### Apply the file to create deployment       
 `kubectl apply -f backend-deployment.yaml`
 
