@@ -17,7 +17,7 @@ kubectl get pods -n project-plato
 ```
 
 #### check the /tmp file is writable and remaining filesystem are read-only        
-`kubectl exec -it <pod-name(backend)> -n project-plato -- /bin/bash`
+`kubectl exec -it <pod-name(backend)> -n project-plato -- sh`
 
 #### After exec try to write in /tmp      
 
@@ -67,7 +67,7 @@ kubectl apply -f db2-service.yaml
 
 #### Testing Network policy functionality      
 ```
-kubectl exec -it <pod-name(backend)> -n project-plato -- /bin/bash
+kubectl exec -it <pod-name(backend)> -n project-plato -- sh
 telnet db1-service 6379
 telnet db2-service 5432
 ```
