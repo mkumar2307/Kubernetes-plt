@@ -63,7 +63,9 @@ kubectl apply -f db2-service.yaml
 `kubectl apply -f np-backend.yaml`
 
 #### check the network policy running or not        
-`kubectl get networkpolicy -n project-plato`
+`kubectl get networkpolicies -n project-plato`
+
+![Diagram](images/Screenshot3.jpeg)
 
 #### Testing Network policy functionality      
 ```
@@ -71,6 +73,7 @@ kubectl exec -it <pod-name(backend)> -n project-plato -- sh
 telnet db1-service 6379
 telnet db2-service 5432
 ```
+![Diagram](images/Screenshot2.jpeg)
 If we try to telnet any other services or ports it will fail as we have limited the communication with Network policy.
 
 #### Create a secret for db2       
@@ -83,6 +86,8 @@ Update deployment db2 with secrets and redeploy.
 kubectl exec -it <pod-name(db2)> -n project-plato -- sh
 env | grep DB_
 ```
+![Diagram](images/Screenshot1.jpeg)
+
 #### Adding required repo and deploy ‘Postgres’ and 'kube-prometheus-stack' using its respective helm chart
 ```
 helm repo add bitnami https://charts.bitnami.com/bitnami
